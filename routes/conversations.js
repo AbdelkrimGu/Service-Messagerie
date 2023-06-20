@@ -74,7 +74,7 @@ router.get("/" ,async (req , res) => {
             });
             let other = await getName(conv.otherid);
 
-            conv.name = other.nom + " " + other.prenom;
+            conv.name = other.firstname + " " + other.lastname;
             conv.imageUrl = other.imageUrl;
             //conv.name = "data.name";
             convs.push(conv);
