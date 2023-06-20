@@ -26,7 +26,7 @@ router.post("/" ,async (req , res) => {
             console.log(conversations);
             console.log("format :"+conversations[0]);
             res.json(conversations[0]);
-            return;
+            return res.status(200).json({"message" : "already exist"});
         } 
         const newConversation = new Conversation({
             members: [user.id , req.body.receiverId],
