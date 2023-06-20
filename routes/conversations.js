@@ -66,10 +66,16 @@ router.get("/" ,async (req , res) => {
                 return member != userid;
             }));
             var conv = conversation.toObject();
-            conv.name = userid;
             conv.myid = conv.members.find(function(member){
+                return member == userid;
+            });
+            conv.otherid = conv.members.find(function(member){
                 return member != userid;
             });
+            let other = await getName(conv.otherid);
+
+            conv.name = other.nom + " " + other.prenom;
+            conv.imageUrl = other.imageUrl;
             //conv.name = "data.name";
             convs.push(conv);
         }));   
@@ -81,6 +87,13 @@ router.get("/" ,async (req , res) => {
     }
 
 });
+
+
+async function getName(id){
+    let data = [id];
+    let response = await axios.post(url, data);
+    return response.data;
+}
 
 //get conv of user
 
