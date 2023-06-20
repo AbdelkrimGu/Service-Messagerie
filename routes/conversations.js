@@ -91,7 +91,7 @@ router.get("/" ,async (req , res) => {
 
 async function getName(id){
     let data = [id];
-    const url = "https://userservice-production-dd99.up.railway.app";
+    const url = "https://userservice-production-dd99.up.railway.app/api/v1/open/students";
     let response = await axios.post(url, data);
     return response.data;
 }
