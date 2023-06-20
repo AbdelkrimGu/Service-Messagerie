@@ -91,6 +91,7 @@ router.get("/" ,async (req , res) => {
 
 async function getName(id){
     let data = [id];
+    const url = "https://userservice-production-dd99.up.railway.app";
     let response = await axios.post(url, data);
     return response.data;
 }
