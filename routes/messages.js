@@ -46,7 +46,7 @@ router.get("/:conversationId" ,async (req , res) => {
         try{
             const messages = await Message.find({
                 conversationId: req.params.conversationId, 
-            }).sort({ createdAt: 'desc' });;
+            }).sort({ createdAt: 'asc' });;
             res.status(200).json(messages);
         }
         catch(err){
